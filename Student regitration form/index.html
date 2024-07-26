@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    
+</head>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#message {
+    text-align: center;
+    margin-top: 20px;
+    color: green;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+
+
+
+
+</style>
+<body>
+    <div class="container">
+        <h2>Student Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select id="course" name="course" required>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                </select>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <p id="message"></p>
+        <h3>Registered Students:</h3>
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Date of Birth</th>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Registered students will appear here -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form values
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const dob = document.getElementById('dob').value;
+    const course = document.getElementById('course').value;
+
+    // Basic validation
+    if (firstName && lastName && email && phone && dob && course) {
+        const table = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        const cell3 = newRow.insertCell(2);
+        const cell4 = newRow.insertCell(3);
+        const cell5 = newRow.insertCell(4);
+        const cell6 = newRow.insertCell(5);
+
+        cell1.textContent = firstName;
+        cell2.textContent = lastName;
+        cell3.textContent = email;
+        cell4.textContent = phone;
+        cell5.textContent = dob;
+        cell6.textContent = course;
+
+        document.getElementById('message').textContent = 'Registration successful!';
+    } else {
+        document.getElementById('message').textContent = 'Please fill out all fields.';
+    }
+});
+
+    </script>
+</body>
+</html>
